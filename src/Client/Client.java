@@ -46,7 +46,7 @@ public class Client {
             System.out.println("6. CONNECT TO GROUP");
             System.out.println("7. LOGOUT");
             System.out.println("8. EXIT");
-            System.out.println("********-------------********");
+            System.out.println("********--------------********");
             choose = scanner.nextInt();
 
             switch (choose)
