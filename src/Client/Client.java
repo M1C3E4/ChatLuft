@@ -121,6 +121,15 @@ public class Client {
         System.out.println("TYPE NAME OF USER/GROUP WHERE YOU WANT TO SEND FILE");
         String id = scanner.next();
         //sender.sendFile(login + ":" + password + ":" + Operation.FILE_TRANSFER + ":" + id, path);
+        byte []b = new byte[20002];
+        try {
+            InputStream inputStream = socket.getInputStream();
+            FileOutputStream fileOutputStream = new FileOutputStream("E:\\ttttt.txt");
+            inputStream.read(b, 0, b.length);
+            fileOutputStream.write(b, 0, b.length);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void sendLogout(){

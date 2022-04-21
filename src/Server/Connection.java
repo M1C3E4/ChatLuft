@@ -51,7 +51,22 @@ public class Connection implements Runnable{
     }
 
     public void sendFile(byte[] bytes){
-
+        try {
+            FileInputStream fileInputStream = new FileInputStream("F:\\rolly.txt");
+            byte b[] = new byte[2002];
+            try {
+                fileInputStream.read(b, 0, b.length);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            OutputStream outputStream = socket.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public byte[] readFile(){
