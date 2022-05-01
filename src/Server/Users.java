@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Users {
-
     private ArrayList<Entity> entities = new ArrayList<>();
-
     private static Users instance = null;
-
     private Users(){
         loadUsers();
         loadGroups();
@@ -21,12 +18,10 @@ public class Users {
     {
         if(instance == null)
             instance = new Users();
-
         return instance;
     }
 
     public Entity getEntityById(String id){
-
         for (Entity e : entities)
         {
             if(e.id.equals(id))
@@ -124,10 +119,6 @@ public class Users {
         }
     }
 
-    private void loadHistory() {
-
-    }
-
     public abstract class Entity {
         protected String id;
         public abstract void sendMessage(String message);
@@ -165,7 +156,6 @@ public class Users {
     public class Group extends Entity {
 
         private ArrayList<User> usersInGroup;
-
         public Group(String groupName)
         {
             this.id = groupName;

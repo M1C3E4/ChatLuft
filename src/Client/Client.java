@@ -5,20 +5,14 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client {
-
     private Socket socket;
-
     private String connectedEntityId;
-
     private Receiver reader;
     private Sender sender;
-
     private String login, password;
 
     public Client(String address, int port) throws IOException {
-
         socket = new Socket(address, port);
-
         try {
             reader = new Receiver(new BufferedReader(new InputStreamReader(socket.getInputStream())), new DataInputStream(socket.getInputStream()));
             sender = new Sender(new PrintWriter(new OutputStreamWriter(socket.getOutputStream())), new DataOutputStream(socket.getOutputStream()));
@@ -29,7 +23,6 @@ public class Client {
         {
             e.printStackTrace();
         }
-
         mainMenu();
     }
 
@@ -82,7 +75,6 @@ public class Client {
     public void sendMessage(){
         String mess;
         Scanner scanner = new Scanner(System.in);
-
         System.out.print("TYPE MESSAGE:");
         mess = scanner.next();
         sendMessage(mess, connectedEntityId);
@@ -137,11 +129,9 @@ public class Client {
     }
 
     class Sender implements Runnable {
-
         private PrintWriter writer;
         private DataOutputStream dataOutput;
         private String toSend = null;
-
         public Sender(PrintWriter writer, DataOutputStream dataOutput)
         {
             this.writer = writer;
@@ -164,13 +154,10 @@ public class Client {
                 e.printStackTrace();
             }
         }
-
         public void output(String message){
             sender.toSend = message;
         }
-
         public void sendFile(String message, String path){
-
         }
     }
 
@@ -239,10 +226,6 @@ public class Client {
             {
                 System.out.println("UNDEFINDED RESPONSE -> " + message);
             }
-        }
-
-        public void readFile(String path){
-
         }
     }
 }

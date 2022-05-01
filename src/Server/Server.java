@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Server {
 
+    private final FileChatLogDAO chatLogDAO = new FileChatLogDAO();
     private ServerSocket serverSocket;
     private ArrayList<Connection> connections = new ArrayList<Connection>();
 
@@ -19,7 +20,7 @@ public class Server {
             System.out.println("[SERVER-LOG] Waiting for new connection...");
             Socket client = serverSocket.accept();
             System.out.println("[SERVER-LOG] Client connected [external address:" + client.getInetAddress() + "]");
-            Connection connection = new Connection(client);
+            Connection connection = new Connection(client, chatLogDAO);
             connections.add(connection);
             new Thread(connection).start();
         }
